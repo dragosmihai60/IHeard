@@ -1,0 +1,47 @@
+﻿@model IHeard.Models.Bookmark
+
+
+<div class="row">
+
+    <div class="col-12" style="color:coral">
+        <h5 class="card-title" name="Name">@Model.BookmarkName</h5>
+        @if (ViewBag.EsteAdmin)
+        {
+            <i class="bi bi-person"> Creat de: </i> @Model.User.UserName
+
+        }
+        
+        <br />
+        <br />
+        Stiri in colectie:
+        <br /><br />
+    </div>
+
+    @if(Model.NewsBookmarks.Count > 0)
+        @foreach (var newsBookmark in Model.NewsBookmarks)
+    {
+        <div class="col-12">
+                <div class="card" style="width: 100%; color:coral">
+            @*<img src="..." class="card-img-top" alt="..."> *@
+
+               
+                        <div class="card-body">
+                        @Html.Partial("NewsInfo", newsBookmark.News)
+
+                            @*
+                            <h3 class="card-title alert-success py-3 px-3 rounded-2">@Model.BookmarkName</h3>
+
+                            <div class="d-flex justify-content-between flex-row mt-5">
+
+                            <div><i class="bi bi-person"></i> @Model.User.UserName</div>
+
+                            </div>*@
+
+                        </div>
+
+                </div>
+            </div>
+      
+    }
+
+</div>

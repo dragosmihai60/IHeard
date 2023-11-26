@@ -1,0 +1,57 @@
+﻿@model IHeard.Models.News
+
+
+<h2 class="text-center mt-5">Adaugare stire</h2>
+<br />
+<div class="container mt-5" style="background-image: url(../Images/poza.jpg)">
+    <div class="row">
+        <div class="col-6 offset-3">
+
+            @using (Html.BeginForm(actionName: "New", controllerName: "Newss",
+            method: FormMethod.Post))
+            {
+
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+                @Html.Label("NewsTitle", "Titlu Stire")
+                <br />
+                @Html.TextBox("NewsTitle", null, new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(m => m.NewsTitle, "", new { @class = "text-danger" })
+                <br />
+
+                <br />
+
+                @Html.Label("NewsContent", "Continut Stire")
+                <br />
+                @Html.TextArea("NewsContent", null, new { @class = "form-control" })
+
+                @Html.ValidationMessage("NewsContent", null, new { @class = "text-danger" })
+                <br />
+
+                <br />
+
+                <label>Selectati categoria</label>
+                @Html.DropDownListFor(m => m.CategoryId, new SelectList(Model.Categ, "Value", "Text"),
+            "Selectati categoria", new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(m => m.CategoryId, null, new { @class = "text-danger" })
+                <br />
+
+                <br />
+
+                <button class="btn" style="background-color:indianred" type="submit">Adauga stire</button>
+
+            }
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
